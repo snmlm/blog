@@ -1,0 +1,15 @@
+---
+title: System.gc()与Object.finalize()的区别
+date: 2018/10/11
+url: \2018\10\11\GcAndFinalize
+categories: 知识点
+tags: 
+	- java
+---
+ <meta name="referrer" content="no-referrer" />
+
+`finalize()`是由JVM自动调用的，你可以用`System.gc()`，但JVM不一定会立刻执行，JVM感觉内存空间有限时，才会开始执行`finalize()`,至于新的对象创建个数和被收集个数不同是因为收集的对象只和JVM的垃圾收集策略有关。
+<!-- more -->
+
+### finalize()函数是干嘛的?Java不是有Garbage Collection(以下简称gc)来负责回收内存吗?
+

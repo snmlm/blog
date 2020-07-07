@@ -1,0 +1,260 @@
+---
+title: Hexo博客+spfk主题+LiveRe评论+Github pages
+date: 2018/09/28
+url: \2018\09\28\Hexo_spfk_LiveRe_GithubPages
+categories: 开发工具
+tags: 
+	- hexo
+---
+ <meta name="referrer" content="no-referrer" />
+
+### 动机
+刚接触Blog，觉得很新鲜，选择一个免费空间来写。
+<!-- more -->
+[Github](https://github.com/)是一个全世界程序员聚集的地方，大家相互分享自己写的代码，提升别人，也提升自己。
+先说说Github pages服务搭建博客的好处：
+
+* 免费
+* 免费
+* 免费
+
+再说说Hexo的优点：
+
+* 生成纯静态网页，访问速度快
+* 没有数据库，迁移很方便
+* 免费
+
+在评论系统上选用LiveRe：
+
+* 大佬级的disqus评论系统在墙外（沉默一会），需要vpn
+* 多说、网易云已躺
+* 搜狐畅言需要域名备案，免费的我怎么可能有域名，所以直接忽略
+* 原生评论系统？？？hexo没有数据库，怎么弄。。。
+* gitment是github的，没弄明白
+* 友言，登陆不上
+
+看来看去，LiveRe还能用，虽然bug比较多，网络连接比较差。爱折腾的我们，会找到更好的。
+
+### 安装Git Bash
+我的是windows环境，所以下载windows版本并安装就可以了。<br/>
+
+* [下载地址](https://gitforwindows.org/)
+* 下载exe，打开之后，一路下一步就好了
+* 安装好后，打开gitbash
+
+![](https://raw.githubusercontent.com/snmlm/resources/master/picture/0Piax8M.png)
+
+* 找不到gitbash的小伙伴，右键空白处就能看到
+
+![](https://raw.githubusercontent.com/snmlm/resources/master/picture/4Vl2Alk.png)
+
+* 或者在所有程序中找到Git文件夹
+
+![](https://raw.githubusercontent.com/snmlm/resources/master/picture/IRIO9Mr.png)
+
+* 查看当前安装的版本
+
+```
+git version
+```
+
+![](https://raw.githubusercontent.com/snmlm/resources/master/picture/AczxU7z.png)
+
+### 安装NodeJs
+Hexo是基于nodeJS环境的静态博客，里面的npm工具很有用啊，所以还是老老实实把这玩意儿装了吧
+
+* [下载地址](https://nodejs.org/en/)（说明：LTS为长期支持版，Current为当前最新版）
+* 安装步骤：反正下载好msi文件后，双击打开安装，也是一路next，不过在Custom Setup这一步记得选`Add to PATH` ,这样你就不用自己去配置电脑上环境变量了，装完在按 `win + r` 快捷键调出运行，然后输入cmd确定，在cmd中输入path可以看到你的node是否配置在里面（环境变量），没有的自行问度娘吧。
+
+```
+node -v
+```
+
+![](https://raw.githubusercontent.com/snmlm/resources/master/picture/aDLESxv.png)
+
+### 安装hexo
+安装上面两个软件后，后面的东西就不需要我们自己手动下载了，因为用gitbash中npm工具就能完成。
+
+* 首先需要找个地方来存放你的blog，在电脑的某个地方创建文件夹。
+* 在gitbash中用`cd`进入该文件中，并执行命令,默认安装在c盘下，想修改安装路径的小伙伴，请自行百度。
+
+```
+npm i -g hexo
+```
+
+* 安装后查看版本,命令：
+
+```
+hexo -v
+```
+
+![](https://raw.githubusercontent.com/snmlm/resources/master/picture/wZviLTe.png)
+
+* 随后我们进行blog的初始化，命令：
+
+```
+hexo init
+```
+
+![](https://raw.githubusercontent.com/snmlm/resources/master/picture/2PnsrRt.png)
+
+* 说明一下各个文件的作用：
+  * node_modules：是依赖包
+  * public：存放的是生成的页面
+  * scaffolds：命令生成文章等的模板
+  * source：用命令创建的各种文章
+  * themes：主题
+  * _config.yml：整个博客的配置
+  * db.json：source解析所得到的
+  * package.json：项目所需模块项目的配置信息
+* 到这一步，架子算是搭好了，剩下的就是一些个性化的配置了
+
+### 搭桥到github
+把创建好的blog项目部署到github上并用github page
+
+* 首先需要有github账号，如果没有，请自行百度，注册很简单。
+* 有了账号，并登陆后创建一个repo,名称为`yourname.github.io`,其中yourname是你github的名称，操作如下：
+
+![](https://raw.githubusercontent.com/snmlm/resources/master/picture/ChdyWrM.png)
+
+![](https://raw.githubusercontent.com/snmlm/resources/master/picture/CgGsKyy.png)
+
+* 点击`Create repository`即可
+* 回到gitbash中，配置github账户信息(`YourName`和`YourEmail`填写你们自己的)
+
+```
+git config --global user.name "YourName"
+git config --global user.email "YourEmail"
+```
+
+* 创建ssh
+* 在gitbash中输入以下命令，需要输入密码,生成ssh密钥。然后进入C:\Users\用户名\.ssh,进入此文件夹，找到`id_rsa.pub`文件，查看里面的内容
+ 
+```
+ssh-keygen -t rsa -C "youremail"
+```
+
+* 登陆github：
+
+![](https://raw.githubusercontent.com/snmlm/resources/master/picture/HW6wNvt.png)
+![](https://raw.githubusercontent.com/snmlm/resources/master/picture/RWn2wyh.png)
+
+* 点击`New SSH key`
+
+![](https://raw.githubusercontent.com/snmlm/resources/master/picture/P04VMJ8.png)
+
+* title随便起，key值填入id_rsa.pub文件内的内容，点击`Add SSH key`即可
+* 在gitbash中校验是否添加成功,命令：
+
+```
+ssh -T git@github.com
+```
+
+### 把blog关联到github中
+
+* 打开blog项目，修改`_config.yml`文件中的一些配置,在文档字下面添加下面的代码，冒号后面有一个英文的空格,
+
+``` 
+deploy:
+    type: git
+    repo: git@github.com:YourgithubName/YourgithubName.github.io.git
+    branch: master
+```
+* 回到gitbash中，进入你的本地blog目录，执行下面命令：
+```
+hexo clean
+hexo g
+hexo s
+```
+> 注：`hexo 3.0`把服务器独立成个别模块，需要单独安装：
+```
+npm i hexo-server
+```
+
+* 打开浏览器，输入：`http://localhost:4000`
+* 你就可以看到hexo自带主题的页面了
+
+### 部署到github
+
+* 先安装插件,只有安装这个，才能部署到github中
+
+```
+npm install hexo-deployer-git --save
+```
+
+* 执行命令：
+
+```
+hexo clean
+hexo g
+hexo s
+```
+> `hexo d`的时候，会让输入生成ssh时候输入的密码。
+
+* 部署成功后，访问`http://yourgithubname.github.io`,就可以看见了
+
+### 修改主题为spfk
+
+* hexo默认的是主题是`landscape`,我用的是spfk的主题。
+* 在gitbash中进入你的blog所在的文件夹，输入以下命令
+
+```
+git clone https://github.com/luuman/hexo-theme-spfk.git themes/spfk
+```
+
+* 下载完成后，修改blog下的`_confing.yml`文件，将`theme`属性修改成`spfk`,改成其他主题，操作类似
+* 如果主题需要更新的话，在gitbash中,进入主题所在文件夹，在`blog\themes`中，名字对应的文件
+
+```
+git pull
+```
+
+* 更换完后，重新加载和部署即可
+
+### 添加LiveRe评论系统
+
+* 首先进入[LiveRe](https://livere.com/)
+* 进行注册，注册完成
+* 点击安装，选择`City版`，喜欢付费的小伙伴，可以选择`Premium版`，点击`现在安装`
+* 根据自身的需求进行一些设置
+* 绑定网址，生成代码
+* 在管理界面左侧找到代码管理，把一般网站里的代码粘贴出来，命名为`livere.ejs`
+* 放到`blog\themes\spfk\layout\_partial\comments`
+
+![](https://raw.githubusercontent.com/snmlm/resources/master/picture/9D3XRNo.png)
+
+
+* 由于spfk主题下没有LiveRe评论系统的，所以要手动进行添加
+* 打开文件`hexo\themes\spfk\layout\_partial`下的`article.ejs`文件
+
+![](https://raw.githubusercontent.com/snmlm/resources/master/picture/r3QFah0.png)
+
+* 找到`if (!index && post.comments){`这里添加以下代码
+
+```
+<%  if (theme.livere.on) { %>
+    <%- partial('comments/livere') %>
+<% } %>
+```
+
+![](https://raw.githubusercontent.com/snmlm/resources/master/picture/YnPSlWX.png)
+
+* 打开spfk主题配置文件`hexo\themes\spfk`下的`_config.yml`添加以下代码,`Yourid`的值时LiveRe代码中的`data-uid`的值
+
+```
+livere:
+    on: true
+    livere_uid: Yourid
+```
+
+![](https://raw.githubusercontent.com/snmlm/resources/master/picture/3Sqc0NV.png)
+
+* 由于主题中还有其他的评论系统，把其他评论系统全部注释掉即可
+
+### 最后
+
+* 执行编译和部署命令，将整合过后的项目部署到github上
+* 自己的小博客大功告成
+
+### 打完收工
+

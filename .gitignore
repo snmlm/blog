@@ -1,0 +1,13 @@
+*.log
+.deploy*/
+.git/
+node_modules/
+public/
+scaffolds/
+source/Home/
+source/README.md
+themes/
+_config.yml
+db.json
+package.json
+package-lock.json
