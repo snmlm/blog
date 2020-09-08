@@ -1,13 +1,15 @@
 ---
 title: 汇总
+date: 2020/09/04
 tags: 
-	- 汇总
+    - 汇总
 ---
- <meta name="referrer" content="no-referrer" /><!-- more -->
+
+<!-- more -->
 ## java
 ### 基础类型
-{% post_link daily/20200508 %}
-byte（1），short（2），char（2），int（4），long（8），float（4），double（8），从左向右自动转换，从右向左强制转换会精度损失，要加0.5 四舍五入
+{% post_link java/basics/20200508 %}
+
 ### 枚举enum
 单例模式的一种
 ### 引用类型

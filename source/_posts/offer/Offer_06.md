@@ -1,10 +1,10 @@
 ---
-title: 旋转数组的最小数字
-categories: 剑指offer
+title: 06 旋转数组的最小数字
+date: 2020/03/13
 tags: 
-	- 算法
+    - 算法
+    - 剑指offer
 ---
- <meta name="referrer" content="no-referrer" />
 
 ### 题目描述
 

@@ -1,10 +1,10 @@
 ---
-title: 数值的整数次方
-categories: 剑指offer
+title: 12 数值的整数次方
+date: 2020/03/13
 tags: 
     - 算法
+    - 剑指offer
 ---
- <meta name="referrer" content="no-referrer" />
 
 ### 题目描述
 

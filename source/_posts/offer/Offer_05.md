@@ -1,10 +1,10 @@
 ---
-title: 用两个栈实现队列
-categories: 剑指offer
+title: 05 用两个栈实现队列
+date: 2020/03/13
 tags: 
-	- 算法
+    - 算法
+    - 剑指offer
 ---
- <meta name="referrer" content="no-referrer" />
 
 ### 题目描述
 

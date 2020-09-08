@@ -1,10 +1,10 @@
 ---
-title: 二进制中1的个数
-categories: 剑指offer
+title: 11 二进制中1的个数
+date: 2020/03/13
 tags: 
     - 算法
+    - 剑指offer
 ---
- <meta name="referrer" content="no-referrer" />
 
 ### 题目描述
 
