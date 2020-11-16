@@ -219,18 +219,6 @@ tags:
 
 # 算法
 - {% post_link algorithm/offer/Offer_00 %}
-    - {% post_link algorithm/offer/Offer_01 %}
-    - {% post_link algorithm/offer/Offer_02 %}
-    - {% post_link algorithm/offer/Offer_03 %}
-    - {% post_link algorithm/offer/Offer_04 %}
-    - {% post_link algorithm/offer/Offer_05 %}
-    - {% post_link algorithm/offer/Offer_06 %}
-    - {% post_link algorithm/offer/Offer_07 %}
-    - {% post_link algorithm/offer/Offer_08 %}
-    - {% post_link algorithm/offer/Offer_09 %}
-    - {% post_link algorithm/offer/Offer_10 %}
-    - {% post_link algorithm/offer/Offer_11 %}
-    - {% post_link algorithm/offer/Offer_12 %}
 - {% post_link algorithm/20190423 %}
 
 # 数据库
