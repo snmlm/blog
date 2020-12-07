@@ -71,7 +71,8 @@ tags:
 ## 集合/容器
 ### Collection&lt;E&gt;
 - List
-    - ArrayList：实现了RandomAccess接口，for循环比foreach快，数组实现，无参构造，初始0，add的时候才会初始为10，阀值是当前上限，扩充为x+(x>>1)，约为1.5倍，有参构造跟0比较，大于0，初始填值，小于0，报错IllegalArgumentException，remove的时候注意数据移动，倒叙删除，迭代器，转Set，{% post_link java/basics/20190417 %}
+    - ArrayList：实现了RandomAccess接口，for循环比foreach快，数组实现，无参构造，初始0，add的时候才会初始为10，阀值是当前上限，扩充为x+(x>>1)，约为1.5倍，有参构造跟0比较，大于0，初始填值，小于0，报错IllegalArgumentException，remove的时候注意数据移动，倒叙删除，迭代器，转Set
+        - {% post_link java/basics/20190417 %}
     - Linkedlist：双向链表实现
 - Set
     - HashSet：对象必须重写hashCode方法，对象必须重写equals方法，链表实现，可以用作去重
@@ -80,7 +81,7 @@ tags:
     - 没有实现的阻塞接口的LinkedList：实现了java.util.Queue接口和java.util.AbstractQueue接口
 
 ### Map&lt;K,V&gt;
-- {% post_link java/basics/20190501 HashMap%}
+- {% post_link java/basics/20190501 HashMap%} 包含ConcurrentHashMap
 - TreeMap
     - 自带{% post_link dataStructure/20200525 %}（R-B tree）
 
@@ -121,34 +122,7 @@ tags:
 - {% post_link java/basics/20200916 %}
 - {% post_link java/basics/20201013 %}
 - {% post_link java/basics/20201015 %}
-- 线程通信
-    - 基于共享内存的通信
-        - 共享上下文
-        - 内部类
-        - 管道
-    - 基于线程调度的通信
-        - java5之前
-            - wait()-线程暂停/等待
-            - notify()/notifyAll()-唤醒等待的线程
-        - java5+
-            - Condition
-                - await()-线程等待
-                - signal()/signalAll()-唤醒等待的线程
-- 线程池
-    - 空间换时间的操作，事先创建多个线程，放入线程池中，省去单个线程的创建于销毁的时间
-    - 创建线程池
-        - Executors工具类
-            - newFixedThreadPool(int)
-                - 推荐在服务器变成使用
-            - newCachedThreadPool
-    - ExecutorService
-        - execute(Runnable)-启动线程分配任务
-        - submit(Callable<T>)-启动线程分配任务
-            - Future<T>
-                - 获取线程结果
-        - shutdown()-等待线程执行完毕关闭线程池
-        - shutdownNow()-立即关闭线程池返回等待执行的线程
-        - isTerminated()-是否执行完所有线程
+- {% post_link java/basics/20201203 %}
 
 ## Lambda表达式
 匿名方法的实现
@@ -246,18 +220,24 @@ tags:
 
 ## mogondb
 # 框架
-## spring
+## spring framework
 - core 
     - {% post_link java/spring/20200610 %}
+    - {% post_link java/spring/20200710 %}
 - aop
 - data access/intergration
 - web
 - test
+- 其他
+    - {% post_link java/spring/20190411 %}
+    - {% post_link java/spring/20190421 %}
+    - {% post_link java/spring/20201202 %}
 
-## springboot
-## 微服务
+## spring mvc
+## spring boot
+## 微服务框架
 ### dubbo
-### springCould
+### spring could
 ## 数据库框架
 ### jdbc
 - 操作顺序
