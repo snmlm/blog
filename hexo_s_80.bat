@@ -1,1 +1,0 @@
-start E:\Git\git-bash.exe -c "hexo s -p=80"

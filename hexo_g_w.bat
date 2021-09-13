@@ -1,1 +1,0 @@
-start E:\Git\git-bash.exe -c "hexo g -w"
