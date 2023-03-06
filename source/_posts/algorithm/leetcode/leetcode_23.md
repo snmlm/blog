@@ -1,87 +1,111 @@
 ---
 title: leetcode23-合并K个升序链表
-date: 2023/3/2
+date: 2023/3/6
 tags: 
     - leetcode
 ---
 
 # 题目描述
 
-数字 `n` 代表生成括号的对数，请你设计一个函数，用于能够生成所有可能的并且 **有效的** 括号组合。
+给你一个链表数组，每个链表都已经按升序排列。
+
+请你将所有链表合并到一个升序链表中，返回合并后的链表。
 
 
 
 **示例 1：**
 
 ```
-输入：n = 3
-输出：["((()))","(()())","(())()","()(())","()()()"]
+输入：lists = [[1,4,5],[1,3,4],[2,6]]
+输出：[1,1,2,3,4,4,5,6]
+解释：链表数组如下：
+[
+  1->4->5,
+  1->3->4,
+  2->6
+]
+将它们合并到一个有序链表中得到。
+1->1->2->3->4->4->5->6
 ```
 
 **示例 2：**
 
 ```
-输入：n = 1
-输出：["()"]
+输入：lists = []
+输出：[]
+```
+
+**示例 3：**
+
+```
+输入：lists = [[]]
+输出：[]
 ```
 
 
 
 **提示：**
 
-- `1 <= n <= 8`
+- `k == lists.length`
+- `0 <= k <= 10^4`
+- `0 <= lists[i].length <= 500`
+- `-10^4 <= lists[i][j] <= 10^4`
+- `lists[i]` 按 **升序** 排列
+- `lists[i].length` 的总和不超过 `10^4`
 
 # 题目思路
 
-- 
+- 前置需要两个链表的合并
+- 顺序合并
+- 分冶合并
+- 优先队列
 
 # Java
 ```java
-import java.util.HashMap;
-import java.util.Map;
-
-public class Solution {
-
-    // 做减法
-
-    public List<String> generateParenthesis(int n) {
-        List<String> res = new ArrayList<>();
-        // 特判
-        if (n == 0) {
-            return res;
-        }
-
-        // 执行深度优先遍历，搜索可能的结果
-        dfs("", n, n, res);
-        return res;
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ * int val;
+ * ListNode next;
+ * ListNode() {}
+ * ListNode(int val) { this.val = val; }
+ * ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode mergeKLists(ListNode[] lists) {
+        return merge(lists, 0, lists.length - 1);
     }
 
-    /**
-     * @param curStr 当前递归得到的结果
-     * @param left   左括号还有几个可以使用
-     * @param right  右括号还有几个可以使用
-     * @param res    结果集
-     */
-    private void dfs(String curStr, int left, int right, List<String> res) {
-        // 因为每一次尝试，都使用新的字符串变量，所以无需回溯
-        // 在递归终止的时候，直接把它添加到结果集即可，注意与「力扣」第 46 题、第 39 题区分
-        if (left == 0 && right == 0) {
-            res.add(curStr);
-            return;
+    public ListNode merge(ListNode[] lists, int l, int r) {
+        if (l == r) {
+            return lists[l];
         }
+        if (l > r) {
+            return null;
+        }
+        int mid = (l + r) >> 1;
+        return mergeTwoLists(merge(lists, l, mid), merge(lists, mid + 1, r));
+    }
 
-        // 剪枝（如图，左括号可以使用的个数严格大于右括号可以使用的个数，才剪枝，注意这个细节）
-        if (left > right) {
-            return;
+    public ListNode mergeTwoLists(ListNode a, ListNode b) {
+        if (a == null || b == null) {
+            return a != null ? a : b;
         }
-
-        if (left > 0) {
-            dfs(curStr + "(", left - 1, right, res);
+        ListNode head = new ListNode(0);
+        ListNode tail = head, aPtr = a, bPtr = b;
+        while (aPtr != null && bPtr != null) {
+            if (aPtr.val < bPtr.val) {
+                tail.next = aPtr;
+                aPtr = aPtr.next;
+            } else {
+                tail.next = bPtr;
+                bPtr = bPtr.next;
+            }
+            tail = tail.next;
         }
-
-        if (right > 0) {
-            dfs(curStr + ")", left, right - 1, res);
-        }
+        tail.next = (aPtr != null ? aPtr : bPtr);
+        return head.next;
     }
 }
 ```
