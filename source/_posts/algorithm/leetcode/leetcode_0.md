@@ -59,3 +59,4 @@ tags:
 {% post_link algorithm/leetcode/leetcode_48 %}</br>
 {% post_link algorithm/leetcode/leetcode_49 %}</br>
 {% post_link algorithm/leetcode/leetcode_50 %}</br>
+{% post_link algorithm/leetcode/leetcode_51 %}</br>
