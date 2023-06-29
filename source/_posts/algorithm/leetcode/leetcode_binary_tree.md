@@ -301,5 +301,6 @@ public int[] sort(int[] nums) {
 ```
 
 ## 题目
+{% post_link algorithm/leetcode/leetcode_94 %}</br>
 {% post_link algorithm/leetcode/leetcode_104 %}</br>
 {% post_link algorithm/leetcode/leetcode_110 %}</br>

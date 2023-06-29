@@ -9,6 +9,7 @@ tags:
 
 ### leetcode  汇总
 
+{% post_link algorithm/leetcode/leetcode_binary_tree %}</br>
 {% post_link algorithm/leetcode/leetcode_1 %}</br>
 {% post_link algorithm/leetcode/leetcode_2 %}</br>
 {% post_link algorithm/leetcode/leetcode_3 %}</br>
@@ -61,4 +62,6 @@ tags:
 {% post_link algorithm/leetcode/leetcode_50 %}</br>
 {% post_link algorithm/leetcode/leetcode_51 %}</br>
 {% post_link algorithm/leetcode/leetcode_52 %}</br>
-
+{% post_link algorithm/leetcode/leetcode_94 %}</br>
+{% post_link algorithm/leetcode/leetcode_104 %}</br>
+{% post_link algorithm/leetcode/leetcode_110 %}</br>
