@@ -65,3 +65,5 @@ tags:
 {% post_link algorithm/leetcode/leetcode_94 %}</br>
 {% post_link algorithm/leetcode/leetcode_104 %}</br>
 {% post_link algorithm/leetcode/leetcode_110 %}</br>
+{% post_link algorithm/leetcode/leetcode_144 %}</br>
+{% post_link algorithm/leetcode/leetcode_145 %}</br>

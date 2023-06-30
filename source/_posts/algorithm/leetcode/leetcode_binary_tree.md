@@ -10,7 +10,7 @@ tags:
 
 - 前序遍历：先访问根节点，再前序遍历左子树，再前序遍历有子树
 - 中序遍历：先中序遍历左子树，在访问根节点，再中序遍历右子树
-- 后序遍历：先后序遍历右子树，再访问根节点，再后续遍历左子树
+- 后序遍历：先后序遍历左子树，再后续遍历由子树，再访问根节点
 
 ### 二叉树结构定义
 ```java
@@ -100,31 +100,38 @@ public void postorderTraversal(TreeNode root, List<Integer> valList){
     if(root == null){
         return;
     }
+    postorderTraversal(root.left);
     postorderTraversal(root.right);
     valList.add(root.val);
-    postorderTraversal(root.left);
 }
 ```
 
 ###  后序递归
 ```java
-public void inorderTraversal(TreeNode root, List<Integer> valList){
-	if(root == null){
-		return;
-    }
-    LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
-    while(!stack.isEmpty() || root!=null) {
-        // 一直往右下遍历
-        while(root != null) {
-            stack.push(root);
-            root = root.right;
+public void postorderTraversal(TreeNode root, List<Integer> valList){
+        if(root == null){
+            return;
         }
-        // 无右子树的时候，去判断左子树
-        root = stack.pop();
-        valList.add(root.val);
-        root = root.left;
+        LinkedList<TreeNode> stack = new LinkedList<TreeNode>();
+        TreeNode lastNode = root;
+        while(!stack.isEmpty() || root!=null) {
+            // 一直往左下遍历
+            while(root!=null) {
+                stack.push(root);
+                root = root.left;
+            }
+            // 一直往由下遍历
+            root = stack.peek();
+            if(root.right == null || root.right == lastNode){
+                valList.add(root.val);
+                lastNode = root;
+                stack.pop();
+                root = null;
+            }else{
+                root = root.right;
+            }
+        }
     }
-}
 ```
 
 ### DFS 深度搜索-从上到下
@@ -304,3 +311,5 @@ public int[] sort(int[] nums) {
 {% post_link algorithm/leetcode/leetcode_94 %}</br>
 {% post_link algorithm/leetcode/leetcode_104 %}</br>
 {% post_link algorithm/leetcode/leetcode_110 %}</br>
+{% post_link algorithm/leetcode/leetcode_144 %}</br>
+{% post_link algorithm/leetcode/leetcode_145 %}</br>
